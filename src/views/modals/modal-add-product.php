@@ -14,6 +14,8 @@
         <textarea class="form-control" id="productDescription" name="productDescription" rows="3"></textarea>
         <label for="productPrice">Precio:</label>
         <input type="text" class="form-control" id="productPrice" name="productPrice" placeholder="Product Price">
+        <label for="photo">Foto: </label>
+        <input type="file" name="photo">
         <div class="buttons">
             <button type="button" class="cancelar" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="agregar">Agregar</button>

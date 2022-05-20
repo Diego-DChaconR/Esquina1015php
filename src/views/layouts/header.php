@@ -52,7 +52,7 @@
             </ul>
         </div>
         <div class="sliding-menu-buttons">
-            <a href="cartstore/productlist.php" id="cart-sliding"><i class="fa fa-shopping-cart"></i></a>
+            <a href="../cartstore/productlist.php" id="cart-sliding"><i class="fa fa-shopping-cart"></i></a>
             <a href="#!" id="login-sliding"><i class="fas fa-sign-in-alt"></i></a>
             <ul class="login-sliding-menu">
                 <li class="login-sliding-menu-li"><a class="login-sliding-menu-a" href="#!">Registrarse</a></li>
