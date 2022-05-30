@@ -1,5 +1,15 @@
+<?php
+    session_start();
+    if(!array_key_exists("mail", $_SESSION)) {
+        echo "<script>
+            window.location.href = '../../index.php';
+            alert('No has iniciado sesión');
+        </script>";
+        exit();
+    }
+?>
 <header class="Encabezado">
-    <a href="../../index.html"><img src="../../assets/images/Logo.png" id="Logo"></a>
+    <a href="../../index.php"><img src="../../assets/images/Logo.png" id="Logo"></a>
     <div class="header-menu">
         <div class="Nav-bar">
             <ul class="Nav">
@@ -26,6 +36,9 @@
                 <li class="login-menu-li"><a class="login-menu-a" href="#!">Registrarse</a></li>
                 <li class="login-menu-li"><a class="login-menu-a" href="#!">Iniciar Sesión</a></li>
             </ul>
+            <?php
+                echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
+            ?>
             <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
         </div>
     </div>

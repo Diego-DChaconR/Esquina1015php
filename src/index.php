@@ -16,7 +16,7 @@
 
 <body>
     <header class="Encabezado">
-        <a href="index.html"><img src="assets/images/Logo.png" id="Logo"></a>
+        <a href="index.php"><img src="assets/images/Logo.png" id="Logo"></a>
         <div class="header-menu">
             <div class="Nav-bar">
                 <ul class="Nav">
@@ -43,6 +43,9 @@
                     <li class="login-menu-li"><a class="login-menu-a" href="#!">Registrarse</a></li>
                     <li class="login-menu-li"><a class="login-menu-a" href="#!">Iniciar Sesión</a></li>
                 </ul>
+                <?php
+                    echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
+                ?>
                 <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
             </div>
         </div>
@@ -135,11 +138,12 @@
         </div>
     </div>
     <div class="login-container">
-        <form class="login">
+        <form class="login" action="controllers/accessController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <input type="hidden" name="_method" value="POST">
             <img id="img-login" src="assets/images/user.png">
             <legend class="login-title"> Iniciar Sesión </legend>
-            <input type="email" value="Correo Electrónico" class="form-control" required />
-            <input type="password" value="Contraseña" class="form-control" required />
+            <input type="email" value="Correo Electrónico" class="form-control" id="login-mail" name="userMail"required />
+            <input type="password" value="Contraseña" class="form-control" id="login-password" name="userPassword" required />
             <div class="login-buttons">
                 <input type="submit" value="Entrar" class="login-button" />
                 <input type="submit" value="Administrador" class="login-button" onclick="window.location.href='views/admin/users.php'" />
@@ -148,15 +152,19 @@
         </form>
     </div>
     <div class="signUp-container">
-        <form class="signUp">
+        <form class="signUp" action="controllers/usersController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
             <legend class="signUp-title"> Registrarse </legend>
             <div class="signUp-personal-info">
-                <input type="text" value="Nombre" class="form-control" required />
-                <input type="text" value="Teléfono" class="form-control" required />
+                <input type="text" value="Nombre" name="userName" id="sign-name" class="form-control" required />
+                <input type="text" value="Teléfono" name="userPhone" id="sign-phone" class="form-control" required />
             </div>
-            <input type="email" value="Correo Electrónico" class="form-control" required />
-            <input type="text" value="Contraseña" class="form-control" required />
-            <input type="text" value="Confirma Contraseña" class="form-control" required />
+            <input type="email" value="Correo Electrónico" name="userMail" id="sign-mail" class="form-control" required />
+            <input type="password" value="Contraseña" name="userPassword" id="sign-password" class="form-control" required />
+            <input type="password" value="Contraseña" name="confirmPassword" id="sign-password2" class="form-control" required />
+            <div class="toPhoto">
+                <label for="photo">Foto: </label>
+                <input type="file" name="photo">
+            </div>
             <div class="signUp-buttons">
                 <input type="submit" value="Registrarse" class="signUp-button" />
                 <input type="button" value="Cancelar" class="signUp-button" />

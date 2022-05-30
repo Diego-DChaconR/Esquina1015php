@@ -29,7 +29,7 @@
     background-color: #c09d02;
 }
 
-.products-controller {
+#products-controller {
     background-color: #b4b4b4;
     width: var(--users-width);
     margin: 1em 2em;
@@ -90,7 +90,7 @@
 }
 
 @media (max-width: 930px) {
-    .products-controller {
+    #products-controller {
         font-size: 65%;
     }
     .options-title {
@@ -104,7 +104,7 @@
 }
 
 @media (max-width: 500px) {
-    .products-controller {
+    #products-controller {
         font-size: 55%;
     }
     .add-product {

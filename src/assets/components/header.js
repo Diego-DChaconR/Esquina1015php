@@ -7,6 +7,14 @@ const loginShow = document.getElementsByClassName("login-menu-li");
 const loginButtons = document.getElementsByClassName("login-button");
 const signUpButtons = document.getElementsByClassName("signUp-button");
 const cart = document.getElementById("Cart");
+const loginInput = document.getElementById("login-mail");
+const passwordInput = document.getElementById("login-password");
+const signName = document.getElementById("sign-name");
+const signMail = document.getElementById("sign-mail");
+const signPassword = document.getElementById("sign-password");
+const signPassword2 = document.getElementById("sign-password2");
+const signPhone = document.getElementById("sign-phone");
+
 
 function dropdownMenu() {
     if (subnav[0].style.display == "none") {
@@ -115,7 +123,6 @@ function controlSubMenu() {
 }
 
 function controlSubMenuExtra() {
-    console.log(subnavEx[0]);
     if (subnavEx[0].style.display != "none") {
         subnavEx[0].style.display = "none";
     } else {
@@ -141,6 +148,34 @@ function controlSignUpForm() {
     }
 }
 
+function cleanMail() {
+    loginInput.value = "";
+}
+
+function cleanPassword() {
+    passwordInput.value = "";
+}
+
+function cleanName() {
+    signName.value = "";
+}
+
+function cleanMailSign() {
+    signMail.value = "";
+}
+
+function cleanPasswordSign() {
+    signPassword.value = "";
+}
+
+function cleanPassword2Sign() {
+    signPassword2.value = "";
+}
+
+function cleanPhoneSign() {
+    signPhone.value = "";
+}
+
 function modifyMenu() {
 
     controlSubMenu();
@@ -163,7 +198,14 @@ function modifyMenu() {
     loginShow[0].addEventListener("click", controlSignUpForm);
     loginShow[1].addEventListener("click", controlLoginForm);
     signUpButtons[1].addEventListener("click", controlSignUpForm);
+    loginInput.addEventListener("click", cleanMail);
+    passwordInput.addEventListener("click", cleanPassword);
     loginButtons[2].addEventListener("click", controlLoginForm);
+    signName.addEventListener("click", cleanName);
+    signMail.addEventListener("click", cleanMailSign);
+    signPassword.addEventListener("click", cleanPasswordSign);
+    signPassword2.addEventListener("click", cleanPassword2Sign);
+    signPhone.addEventListener("click", cleanPhoneSign);
 }
 
 document.addEventListener("DOMContentLoaded", function() {

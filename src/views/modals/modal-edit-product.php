@@ -1,5 +1,7 @@
 <div id="modal-edit-product">
-    <form class="form-group">
+    <form class="form-group" action="../../controllers/productsController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="id" value="" id="form-edit-id">
         <legend class="login-title"> Editar Producto </legend>
         <label for="productName">Nombre:</label>
         <input type="text" class="form-control" id="productName" name="productName" placeholder="Product Name">
@@ -13,11 +15,11 @@
         <label for="productDescription">Descripción:</label>
         <textarea class="form-control" id="productDescription" name="productDescription" rows="3"></textarea>
         <label for="productPrice">Precio:</label>
-        <input type="text" class="form-control" id="productPrice" name="productPrice" placeholder="Product Price">
+        <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="Product Price">
         <label for="photo">Foto: </label>
         <input type="file" name="photo">
         <div class="buttons">
-            <button type="button" class="cancelar" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="cancelar" data-dismiss="modal" onclick = controlModalEditProduct()>Cancelar</button>
             <button type="submit" class="agregar">Actualizar</button>
         </div>
     </form>

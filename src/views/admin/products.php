@@ -24,11 +24,11 @@
         include ("../layouts/headerAdmin.php");
     ?>
     <div class="to-add">
-        <button id="add-product">
+        <button id="add-product" onclick = controlModalAddProduct()>
             Agregar producto
         </button>
     </div>
-    <div class="products-controller">
+    <div id="products-controller">
         <div class="product-info-title">
             <div class="name-title">
                 Nombre
@@ -44,70 +44,17 @@
             </div>
             <div class="options-title"> Opciones </div>
         </div>
-        <div class="product-info">
-            <div class="product-name">
-                Chilaquiles Rojos
-            </div>
-            <div class="product-category">
-                Plato Fuerte
-            </div>
-            <div class="product-description">
-                Los chilaquiles vienen cubiertos con queso fresco y crema, acompañados de frijoles.
-            </div>
-            <div class="product-price">
-                $70
-            </div>
-            <div class="options">
-                <button id="delete"> X </button>
-                <button id="edit"> 📝 </button>
-            </div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">
-                Pozole
-            </div>
-            <div class="product-category">
-                Plato Fuerte
-            </div>
-            <div class="product-description">
-                Pozole de maiz blanco con carne de res, añadiendo lechuga, rabano, cebolla y limon.
-            </div>
-            <div class="product-price">
-                $100
-            </div>
-            <div class="options">
-                <button id="delete"> X </button>
-                <button id="edit"> 📝 </button>
-            </div>
-        </div>
-        <div class="product-info">
-            <div class="product-name">
-                Birria
-            </div>
-            <div class="product-category">
-                Plato Fuerte
-            </div>
-            <div class="product-description">
-                Acompañada de cebolla y cilandro picados con 5 tortillas de maíz
-            </div>
-            <div class="product-price">
-                $110
-            </div>
-            <div class="options">
-                <button id="delete"> X </button>
-                <button id="edit"> 📝 </button>
-            </div>
-        </div>
     </div>
     <?php 
         include("../modals/modal-login.php");
         include("../modals/modal-signup.php");
         include("../modals/modal-add-product.php");
         include("../modals/modal-edit-product.php"); 
+        include("../modals/modal-delete-products.php");
+        include("../../assets/components/prodControl.php");
     ?>
     <script src="../../assets/components/header.js"></script>
     <script src="../../assets/components/slidingMenu.js"></script>
-    <script src="../../assets/components/prodControl.js"></script>
 </body>
 
 </html>

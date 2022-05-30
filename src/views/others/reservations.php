@@ -18,13 +18,13 @@
     <?php
         include ("../layouts/header.php");
     ?>
-    <form class="reservation-form">
+    <form class="reservation-form" action="../../controllers/reservsController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
         <legend class="login-title"> Reservaciones </legend>
-        <input type="text" value="Nombre" class="form-reservation" required/>
-        <input type="text" value="Teléfono" class="form-reservation" required/>
+        <input type="text" value="Nombre" class="form-reservation" name="reservName" required/>
+        <input type="text" value="Teléfono" class="form-reservation" name="reservPhone" required/>
         <div class="branches-form">
-            <label for="branches">Sucursales: </label>
-            <select name="branches" id="branches" required>
+            <label for="reservBranches">Sucursales: </label>
+            <select id="branches" name="reservBranches" required>
                 <option value="QRoo">Playa del Carmen</option>
                 <option value="SLP">Calz. de Guadalupe</option>
                 <option value="CDMX">La Roma</option>
@@ -32,12 +32,12 @@
         </div>
         <div class="special-info-form">
             <div class="persons-form">
-                <label for="No-persons"> No. Personas: </label>
-                <input type="number" min="1" max="12" name="No-persons" class="form-reservation" required>
+                <label for="reservNoPersons"> No. Personas: </label>
+                <input type="number" min="1" max="12" name="reservNoPersons" class="form-reservation" required>
             </div>
             <div class="schedules-form">
-                <label for="schedules">Horarios: </label>
-                <select name="schedules" id="schedules" required>
+                <label for="reservSchedules">Horarios: </label>
+                <select name="reservSchedules" id="schedules" required>
                     <option value="12:00pm">12:00pm</option>
                     <option value="1:00pm">1:00pm</option>
                     <option value="2:00pm">2:00pm</option>

@@ -34,7 +34,7 @@ body {
 }
 
 .admin-menu-list a:hover {
-    padding: 8.5px;
+    padding: 9px;
     border-radius: 0 0 5px 5px;
     background-color: var(--letters-color);
 }

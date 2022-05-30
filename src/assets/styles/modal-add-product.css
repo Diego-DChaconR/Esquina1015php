@@ -1,5 +1,6 @@
 #modal-add-product,
-#modal-edit-product {
+#modal-edit-product,
+#modal-delete {
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
     z-index: 2;
@@ -16,7 +17,7 @@
 .form-group {
     background-color: whitesmoke;
     width: 27em;
-    height: 30em;
+    /*height: 30em;*/
     margin: auto;
     border-radius: 8px;
     box-shadow: 3px 3px 5px #000000;
@@ -95,4 +96,9 @@
 
 .agregar:hover {
     background-color: #00A300;
+}
+
+p {
+    font-size: 1.5em;
+    text-align: center;
 }
