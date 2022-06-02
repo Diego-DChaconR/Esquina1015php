@@ -19,8 +19,6 @@
 <body>
     <?php
         include ("../layouts/header.php");
-    ?>
-    <?php
         include ("../layouts/headerAdmin.php");
     ?>
     <div id="users-controller">
@@ -38,12 +36,10 @@
         </div>
     </div>
     <?php 
-        include("../modals/modal-login.php");
-        include("../modals/modal-signup.php");
         include("../modals/modal-delete-users.php");
         include("../../assets/components/userControl.php");
     ?>
-    <script src="../../assets/components/header.js"></script>
+    <script src="../../assets/components/controlRegister.js"></script>
     <script src="../../assets/components/slidingMenu.js"></script>
 </body>
 

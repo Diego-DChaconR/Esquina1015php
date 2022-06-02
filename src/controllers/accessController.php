@@ -48,13 +48,10 @@
                 $_SESSION["activo"] = $user->getActivo();
                 $_SESSION["foto"] = $user->getFoto();
 
-                var_dump($_SESSION);
-                var_dump(base64_decode($_SESSION["foto"]));
-
-                /*echo'<script type="text/javascript">
+                echo'<script type="text/javascript">
                         window.location.href="../index.php";
                         alert("Bienvenido ' . $user->getNombre() . '");
-                    </script>';*/
+                    </script>';
 
             }catch(PDOException $e) {
                 echo $e;

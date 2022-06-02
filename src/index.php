@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+    ?>
     <header class="Encabezado">
         <a href="index.php"><img src="assets/images/Logo.png" id="Logo"></a>
         <div class="header-menu">
@@ -37,18 +40,28 @@
                 </ul>
             </div>
             <div class="Nav-buttons">
-                <a href="views/cartstore/productlist.php" id="Cart"><i class="fa fa-shopping-cart"></i></a>
+                <a href="views/cartstore/productlist.php" id="Cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="badge">0</span>
+                </a>
                 <a href="#!" id="Login-icon"><i class="fas fa-sign-in-alt"></i></a>
                 <ul class="login-menu">
                     <li class="login-menu-li"><a class="login-menu-a" href="#!">Registrarse</a></li>
                     <li class="login-menu-li"><a class="login-menu-a" href="#!">Iniciar Sesión</a></li>
                 </ul>
-                <?php
-                    echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
-                ?>
+                <a href="views/admin/users.php" id="admin-icon"><i class="fa fa-cogs" aria-hidden="true"></i></a>
                 <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
             </div>
         </div>
+        <?php
+            echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
+        ?>
+        <ul class="photo-menu">
+            <li class="photo-menu-li"><a class="photo-menu-a" href="#!">Mi cuenta</a></li>
+            <?php
+                include ("views/modals/modal-delete-session-index.php");
+            ?>
+        </ul>
     </header>
     <div class="sliding-menu-container">
         <div class="sliding-menu">
@@ -146,7 +159,6 @@
             <input type="password" value="Contraseña" class="form-control" id="login-password" name="userPassword" required />
             <div class="login-buttons">
                 <input type="submit" value="Entrar" class="login-button" />
-                <input type="submit" value="Administrador" class="login-button" onclick="window.location.href='views/admin/users.php'" />
                 <input type="button" value="Cancelar" class="login-button" />
             </div>
         </form>
@@ -171,7 +183,13 @@
             </div>
         </form>
     </div>
-    <script src="assets/components/header.js"></script>
+    <?php
+        if(array_key_exists("mail", $_SESSION)) {
+            echo "<script src='assets/components/ctrlUserphoto.js'></script>";
+        }
+        include ("assets/components/header.php");
+    ?>
+    <script src="assets/components/controlRegister.js"></script>
     <script src="assets/components/slidingMenu.js"></script>
 </body>
 

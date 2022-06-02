@@ -22,7 +22,7 @@
                 $product;
         
                 while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $product = new Producto($row['id'], $row['nombre'], $row['categoria'], $row['descripcion'], $row['precio'], $row['activo']);
+                    $product = new Producto($row['id'], $row['nombre'], $row['categoria'], $row['descripcion'], $row['precio'], $row['activo'], $row['foto']);
                 }
         
                 echo json_encode($product->getArray());
@@ -37,7 +37,7 @@
 
                 $products = array();
                 while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $product = new Producto($row['id'], $row['nombre'], $row['categoria'], $row['descripcion'], $row['precio'], $row['activo']);
+                    $product = new Producto($row['id'], $row['nombre'], $row['categoria'], $row['descripcion'], $row['precio'], $row['activo'], $row['foto']);
                     $products[] = $product->getArray();
                 }
 

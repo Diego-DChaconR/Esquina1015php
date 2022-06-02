@@ -19,8 +19,6 @@
 <body>
     <?php
         include ("../layouts/header.php");
-    ?>
-    <?php
         include ("../layouts/headerAdmin.php");
     ?>
     <div id="reserv-controller">
@@ -41,12 +39,9 @@
         </div>
     </div>
     <?php 
-        include("../modals/modal-login.php");
-        include("../modals/modal-signup.php");
         include("../modals/modal-delete-reserv.php");
         include("../../assets/components/reservControl.php");
     ?>
-    <script src="../../assets/components/header.js"></script>
     <script src="../../assets/components/slidingMenu.js"></script>
 </body>
 

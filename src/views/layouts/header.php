@@ -30,18 +30,28 @@
             </ul>
         </div>
         <div class="Nav-buttons">
-            <a href="../cartstore/productlist.php" id="Cart"><i class="fa fa-shopping-cart"></i></a>
+            <a href="../cartstore/productlist.php" id="Cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span id="badge">0</span>
+            </a>
             <a href="#!" id="Login-icon"><i class="fas fa-sign-in-alt"></i></a>
             <ul class="login-menu">
                 <li class="login-menu-li"><a class="login-menu-a" href="#!">Registrarse</a></li>
                 <li class="login-menu-li"><a class="login-menu-a" href="#!">Iniciar Sesión</a></li>
             </ul>
-            <?php
-                echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
-            ?>
+            <a href="../admin/users.php" id="admin-icon"><i class="fa fa-cogs" aria-hidden="true"></i> </a>
             <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
         </div>
     </div>
+    <?php
+        echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
+    ?>
+    <ul class="photo-menu">
+        <li class="photo-menu-li"><a class="photo-menu-a" href="#!">Mi cuenta</a></li>
+        <?php
+            include ("../modals/modal-delete-session.php");
+        ?>
+    </ul>
 </header>
 <div class="sliding-menu-container">
     <div class="sliding-menu">
@@ -74,3 +84,10 @@
         </div>
     </div>
 </div>
+
+<?php
+    if(array_key_exists("mail", $_SESSION)) {
+        echo "<script src='../../assets/components/ctrlUserphoto.js'></script>";
+    }
+    include ("../../assets/components/header.php");
+?>

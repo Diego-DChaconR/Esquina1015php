@@ -37,11 +37,6 @@
         </form>
         <div id="space"></div>
     </div>
-    <?php 
-        include("../modals/modal-login.php");
-        include("../modals/modal-signup.php");
-    ?>
-    <script src="../../assets/components/header.js"></script>
     <script src="../../assets/components/slidingMenu.js"></script>
 </body>
 

@@ -1,7 +1,10 @@
 const deliveryResume = document.getElementById("delivery-resume");
 const cancelButton = document.getElementById("button-cancel");
+var deliveryPrice = document.getElementById("deliveryPrice");
+var deliveryDescription = document.getElementById("deliveryDescription");
+var deliveryCant = document.getElementById("deliveryCant");
 const keyPriceCart = "pricecart";
-
+var cost = 0;
 var id = "";
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -18,6 +21,7 @@ function paintDelivery() {
     let html = '';
 
     for (var i = 0; i < list.length; i++) {
+        cost = parseInt(list[i].totalPrice) + list[i].totalPrice / 5;
         html +=
             `<div>
                 <span> Subtotal: </span>
@@ -35,6 +39,7 @@ function paintDelivery() {
         id = list[i].id;
     }
 
+    deliveryPrice.value = cost;
     deliveryResume.innerHTML = html;
 }
 

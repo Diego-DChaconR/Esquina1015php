@@ -1,8 +1,7 @@
 const productList = document.getElementById("product-list");
 const Price = document.getElementById("price");
 const confirmButton = document.getElementById("button-confirm");
-const keyList = "productList";
-const keyPriceCart = "pricecart"; 
+const keyPriceCart = "pricecart";
 
 var cost = 0;
 
@@ -16,9 +15,9 @@ function paintProducts() {
 
     let html = '';
 
-    for(var i = 0; i < list.length; i++) {
+    for (var i = 0; i < list.length; i++) {
         cost += (parseInt(list[i].price) * parseInt(list[i].amount));
-        html += 
+        html +=
             `<div class="product" id=${list[i].id}>
                 <span>${list[i].amount}x</span>
                 <span>${list[i].name}</span>
@@ -37,8 +36,7 @@ function getList(key) {
 
     if (list === null) {
         return [];
-    }
-    else {
+    } else {
         return list;
     }
 }
@@ -60,13 +58,13 @@ function deleteProduct(id) {
     let list = getList(keyList);
 
     list = list.filter(i => i.id !== id);
-    
+
     cost = 0;
 
-    for(var i = 0; i < list.length; i++) {
+    for (var i = 0; i < list.length; i++) {
         cost += (parseInt(list[i].price) * parseInt(list[i].amount));
     }
-    
+
     Price.innerText = "Total: $" + cost;
 
     localStorage.setItem(keyList, JSON.stringify(list));
@@ -77,5 +75,5 @@ function deleteProduct(id) {
 
     setTimeout(() => {
         product.remove();
-    }, 300);   
+    }, 300);
 }

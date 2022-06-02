@@ -24,6 +24,7 @@
             if (this.readyState === 4 && this.status === 200) {
                 let list = JSON.parse(this.responseText);
                 paintUsers(list);
+                identifyAdmin(list);
             }
         };
         xhttp.send();
@@ -71,6 +72,15 @@
     function deleteUser(id) {
         idDelete.value = id;
         controlModalDelete();
+    }
+
+    function identifyAdmin(list) {
+        const userInfo = document.getElementsByClassName('user-info');
+        for(var i = 0; i < userInfo.length; i++) {
+            if(userInfo[i].id == list[i].id && list[i].tipo == "admin") {
+                userInfo[i].style.border = "3px solid #FF0049";
+            }
+        }
     }
 
 </script>

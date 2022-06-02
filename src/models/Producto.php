@@ -6,15 +6,17 @@
         private $_descripcion;
         private $_precio;
         private $_activo;
+        private $_foto;
 
 
-        public function __construct($id, $nombre, $categoria, $descripcion, $precio, $activo) {
+        public function __construct($id, $nombre, $categoria, $descripcion, $precio, $activo, $foto) {
             $this->setId($id);
             $this->setNombre($nombre);
             $this->setCategoria($categoria);
             $this->setDescripcion($descripcion);
             $this->setPrecio($precio);
             $this->setActivo($activo);
+            $this->setFoto($foto);
         }
 
         public function getId() {
@@ -65,6 +67,14 @@
             $this->_activo = $activo;
         }
 
+        public function getFoto() {
+            return $this->_foto;
+        }
+    
+        public function setFoto($photo) {
+            $this->_foto = base64_encode($photo);
+        }
+
         public function getArray() {
             $arr = array();
 
@@ -74,6 +84,7 @@
             $arr["descripcion"] = $this->getDescripcion();
             $arr["precio"] = $this->getPrecio();
             $arr["activo"] = $this->getActivo();
+            $arr["foto"] = $this->getFoto();
 
             return $arr;
         }

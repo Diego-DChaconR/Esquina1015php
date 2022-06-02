@@ -50,7 +50,7 @@
     width: var(--input-width-l);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 1em;
     font-size: 1em;
 }
@@ -72,19 +72,6 @@
 
 .login input[type="submit"]:hover {
     background-color: var(--button-submit-color-hover);
-}
-
-.login input[value="Administrador"] {
-    cursor: pointer;
-    background-color: var(--button-admin-color);
-    border-radius: 5px;
-    border: 1px solid white;
-    font-size: 0.8em;
-    padding: var(--padding-button-l);
-}
-
-.login input[value="Administrador"]:hover {
-    background-color: var(--button-admin-color-hover);
 }
 
 .login input[type="button"] {
