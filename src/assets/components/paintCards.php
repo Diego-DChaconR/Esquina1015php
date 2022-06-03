@@ -76,6 +76,7 @@
         localStorage.setItem(keyList, JSON.stringify(list));
 
         badge.innerHTML = list.length;
+        badgeSlid.innerHTML = list.length;
     }
 
     function getJSONProducts() {

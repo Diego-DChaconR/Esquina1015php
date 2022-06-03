@@ -52,7 +52,7 @@
     box-shadow: var(--images-shadow);
 }
 
-.opinion-container {
+#opinion-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

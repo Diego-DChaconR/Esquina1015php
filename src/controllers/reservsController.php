@@ -27,7 +27,7 @@
                 $reserv;
         
                 while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $reserv = new Reservacion($row['id'], $row['nombre'], $row['telefono'], $row['sucursal'], $row['NoPersonas'], $row['horario'], $row['activo']);
+                    $reserv = new Reservacion($row['id'], $row['nombre'], $row['telefono'], $row['sucursal'], $row['NoPersonas'], $row['horario'], $row['fecha'], $row['userID'], $row['activo']);
                 }
         
                 echo json_encode($reserv->getArray());
@@ -47,7 +47,7 @@
 
                 $reservs = array();
                 while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                    $reserv = new Reservacion($row['id'], $row['nombre'], $row['telefono'], $row['sucursal'], $row['NoPersonas'], $row['horario'], $row['activo']);
+                    $reserv = new Reservacion($row['id'], $row['nombre'], $row['telefono'], $row['sucursal'], $row['NoPersonas'], $row['horario'], $row['fecha'], $row['userID'], $row['activo']);
                     $reservs[] = $reserv->getArray();
                 }
 
@@ -58,8 +58,10 @@
             }
         }
     } else if($_SERVER["REQUEST_METHOD"] === "POST") {
+        session_start();
+        $userID = $_SESSION["id"];
         if(array_key_exists("reservName", $_POST)) {
-            postReserv($_POST["reservName"], $_POST["reservPhone"], $_POST["reservBranches"], $_POST["reservNoPersons"], $_POST["reservSchedules"]);
+            postReserv($_POST["reservName"], $_POST["reservPhone"], $_POST["reservDate"], $_POST["reservBranches"], $_POST["reservNoPersons"], $_POST["reservSchedules"], $userID);
         }else if (array_key_exists("id", $_POST)) {
             if ($_POST["_method"] === "DELETE") {
                 deleteReserv($_POST["id"]);
@@ -67,16 +69,18 @@
         }
     }
 
-    function postReserv($rName, $rPhone, $rBranche, $rNP, $rSchedule) {
+    function postReserv($rName, $rPhone, $rDate, $rBranche, $rNP, $rSchedule, $rUid) {
         global $connection;
 
         try{
-            $query = $connection->prepare('INSERT INTO reservaciones VALUES (NULL, :nombre, :telefono, :sucursal, :NoPersonas, :horario, 1)');
+            $query = $connection->prepare('INSERT INTO reservaciones VALUES (NULL, :nombre, :telefono, :sucursal, :NoPersonas, :horario, :fecha, :userID, 1)');
             $query->bindParam(':nombre', $rName, PDO::PARAM_STR);
             $query->bindParam(':telefono', $rPhone, PDO::PARAM_STR);
             $query->bindParam(':sucursal', $rBranche, PDO::PARAM_STR);
             $query->bindParam(':NoPersonas', $rNP, PDO::PARAM_INT);
             $query->bindParam(':horario', $rSchedule, PDO::PARAM_STR);
+            $query->bindParam(':fecha', $rDate, PDO::PARAM_STR);
+            $query->bindParam(':userID', $rUid, PDO::PARAM_INT);
             $query->execute();
             
             if($query->rowCount() > 0) {
@@ -86,7 +90,9 @@
                     </script>';
             }
             else {
-                echo "Error al agregar reservacion";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }catch(PDOException $e) {
             error_log("Error de conexión - " . $e, 0);
@@ -109,8 +115,9 @@
                     </script>';
             }
             else {
-                var_dump($rId);
-                echo "Error al eliminar reservacion";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }
         catch(PDOException $e) {

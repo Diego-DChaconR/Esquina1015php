@@ -53,8 +53,11 @@
                     <div class="reserv-name">
                         ${list[i].nombre}
                     </div>
-                    <div class="reserv-phone">
-                        ${phoneWStyle(list[i].telefono)}
+                    <div class="reserv-suc">
+                        ${list[i].sucursal}
+                    </div>
+                    <div class="reserv-date">
+                        ${list[i].fecha}
                     </div>
                     <div class="reserv-cantPerson">
                         ${list[i].NoPersonas}

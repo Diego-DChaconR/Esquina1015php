@@ -10,6 +10,8 @@
     var photoMenu = document.getElementsByClassName("photo-menu")[0];
     var userPhoto = document.getElementById("User-photo");
     var badge = document.getElementById("badge");
+    var badgeSlid = document.getElementById("badge-slid");
+
     
     function dropdownMenu() {
         if (subnav[0].style.display == "none") {
@@ -131,6 +133,14 @@
             badge.innerHTML = list.length;
         }
     }
+
+    function controlBadgeSlid() {
+        let list = JSON.parse(localStorage.getItem(keyList));
+    
+        if (list !== null) {
+            badgeSlid.innerHTML = list.length;
+        }
+    }
     
     function modifyMenu() {
     
@@ -138,6 +148,7 @@
         controlSubMenuExtra();
         controlPhotoMenu();
         controlBadge();
+        controlBadgeSlid();
     
         nav[0].addEventListener("click", dropdownMenu);
         nav[0].addEventListener("mouseover", hoverStyle);

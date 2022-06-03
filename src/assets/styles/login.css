@@ -88,6 +88,17 @@
     background-color: var(--button-cancel-color-hover);
 }
 
+#error {
+    background-color: #ff265cbe;
+    font-size: 1em;
+    margin: 0;
+    padding: 0.2em;
+    width: 95%;
+    text-align: center;
+    border-radius: 3px;
+    display: none;
+}
+
 @media (max-width: 550px) {
     .login {
         width: 90%;

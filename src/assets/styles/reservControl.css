@@ -1,5 +1,9 @@
 :root {
     --users-width: 90%;
+    --name-phone-width: 23%;
+    --schedule-width: 15%;
+    --reserv-width: 6%;
+    --options-width: 10%;
 }
 
 #reserv-controller {
@@ -38,29 +42,31 @@
 
 .reserv-name,
 .name-title,
-.reserv-phone,
-.phone-title {
-    width: 30%;
+.reserv-suc,
+.suc-title,
+.reserv-date,
+.date-title {
+    width: var(--name-phone-width);
 }
 
 .schedule-title,
 .reserv-schedule {
-    width: 15%;
+    width: var(--schedule-width);
 }
 
 .reserv-cantPerson,
 .cantPerson-title {
-    width: 10%;
+    width: var(--reserv-width);
 }
 
 .options,
 .options-title {
-    width: 15%;
+    width: var(--options-width);
 }
 
 @media (max-width: 930px) {
     #reserv-controller {
-        font-size: 80%;
+        font-size: 60%;
     }
 }
 

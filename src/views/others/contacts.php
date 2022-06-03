@@ -26,10 +26,11 @@
             <a href="https://facebook.com" target="_blank"><img class="social-medias-img" src="../../assets/images/Social_Medias/facebook.png"></a>
             <a href="https://instagram.com" target="_blank"><img class="social-medias-img" src="../../assets/images/Social_Medias/instagram.png"></a>
         </div>
-        <form class="comment-form">
+        <form class="comment-form" action="../../controllers/opinionController.php" method="POST">
+            <input type="hidden" name="_method" value="POST">
             <legend class="comment-title"> Déjanos tu opinión </legend>
-            <input type="text" value="Nombre" required />
-            <textarea maxlength="100" required> Comentarios </textarea>
+            <input type="text" value="Nombre" name="commentName" id="commentName" required />
+            <textarea maxlength="80" name="commentArea" id="commentArea" required> Comentarios </textarea>
             <div class="comment-form-buttons">
                 <input type="submit" value="Enviar" />
                 <input type="reset" value="Limpiar" />
@@ -37,6 +38,9 @@
         </form>
         <div id="space"></div>
     </div>
+    <?php
+        include ("../../assets/components/opinionControl.php");
+    ?>
     <script src="../../assets/components/slidingMenu.js"></script>
 </body>
 

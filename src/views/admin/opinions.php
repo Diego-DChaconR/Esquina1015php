@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../assets/styles/header.css">
     <link rel="stylesheet" href="../../assets/styles/slidingMenu.css">
     <link rel="stylesheet" href="../../assets/styles/adminMenu.css">
-    <link rel="stylesheet" href="../../assets/styles/reservControl.css">
+    <link rel="stylesheet" href="../../assets/styles/commentAdmin.css">
     <link rel="stylesheet" href="../../assets/styles/login.css">
     <link rel="stylesheet" href="../../assets/styles/signUp.css">
     <link rel="stylesheet" href="../../assets/styles/modal-add-product.css">
@@ -21,29 +21,20 @@
         include ("../layouts/header.php");
         include ("../layouts/headerAdmin.php");
     ?>
-    <div id="reserv-controller">
-        <div class="reserv-info-title">
+    <div id="comments-controller">
+        <div class="comment-info-title">
             <div class="name-title">
                 Nombre
             </div>
-            <div class="suc-title">
-                Sucursal
+            <div class="comment-title">
+                Comentario
             </div>
-            <div class="date-title">
-                Fecha
-            </div>
-            <div class="cantPerson-title">
-                No.
-            </div>
-            <div class="schedule-title">
-                Horario
-            </div>
-            <div class="options-title"> Cancelar </div>
+            <div class="options-title"> Eliminar </div>
         </div>
     </div>
     <?php 
-        include("../modals/modal-delete-reserv.php");
-        include("../../assets/components/reservControl.php");
+        include("../modals/modal-delete-comments.php");
+        include("../../assets/components/commentsControl.php");
     ?>
     <script src="../../assets/components/slidingMenu.js"></script>
 </body>

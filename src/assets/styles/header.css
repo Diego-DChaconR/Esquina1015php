@@ -47,17 +47,24 @@ header {
 }
 
 #User-photo {
-    max-height: 80%;
+    max-height: 60%;
     margin: 0;
     padding: 0;
     display: none;
     border-radius: 8px;
 }
 
+#User-photo:hover {
+    cursor: pointer;
+    border: 3px solid var(--icons-color-hover);
+}
+
 .Nav-bar,
 #Cart,
 #Login-icon,
-#admin-icon {
+#admin-icon,
+#admin-icon-slid,
+.header-menu {
     display: none;
 }
 
@@ -71,11 +78,72 @@ header {
     color: var(--icons-color-hover);
 }
 
-#badge {
+#badge,
+#badge-slid {
     font-size: 0.8em;
+    position: relative;
+    top: -0.8em;
+}
+
+#cart-sliding {
+    text-decoration: none;
+}
+
+#admin-icon,
+#admin-icon-slid {
+    color: var(--icons-color);
+    font-size: calc(var(--text-size) + 0.2em);
+}
+
+#Cart:hover,
+#Login-icon:hover,
+#admin-icon:hover,
+#admin-icon-slid:hover {
+    color: var(--icons-color-hover);
+}
+
+.photo-menu {
+    background-color: whitesmoke;
+    border-radius: 7px;
+    padding: 0;
     position: absolute;
-    top: 1.5em;
-    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    left: 49%;
+    top: 80%;
+}
+
+.form-close {
+    margin: 0;
+}
+
+.photo-menu-li,
+#btnClose {
+    list-style: none;
+    padding: 10px;
+    transition: background-color ease 200ms;
+}
+
+.photo-menu-li:hover,
+#btnClose:hover {
+    border: 1px solid var(--letters-color);
+    color: var(--secondary-color);
+    background-color: var(--letters-color);
+    border-radius: 7px;
+}
+
+#btnClose {
+    font-size: 0.9em;
+    border-radius: 7px;
+    border: transparent;
+    background-color: transparent;
+}
+
+.photo-menu-a {
+    color: var(--secondary-color);
+    text-decoration: none;
 }
 
 @media (min-width: 930px) {
@@ -98,10 +166,6 @@ header {
     #User-photo {
         max-height: 60%;
         margin-right: 20px;
-    }
-    #User-photo:hover {
-        cursor: pointer;
-        border: 3px solid var(--icons-color-hover);
     }
     .header-menu {
         width: var(--header-menu-width);
@@ -193,15 +257,7 @@ header {
         display: initial;
         color: var(--icons-color);
         font-size: calc(var(--text-size) + 0.2em);
-    }
-    #admin-icon {
-        color: var(--icons-color);
-        font-size: calc(var(--text-size) + 0.2em);
-    }
-    #Cart:hover,
-    #Login-icon:hover,
-    #admin-icon:hover {
-        color: var(--icons-color-hover);
+        text-decoration: none;
     }
     #Menu-bars {
         display: none;
@@ -217,10 +273,10 @@ header {
         border-radius: 7px;
         padding: 0;
         position: absolute;
-        display: none;
         text-align: center;
         left: 83.5%;
         top: 50%;
+        display: none;
     }
     .login-menu-li {
         list-style: none;

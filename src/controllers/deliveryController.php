@@ -41,41 +41,34 @@
             try {
                 $tam = intval($_GET["tam"]);
                 $fecha = $_GET["fecha"];
+                $pedidoID;
 
-                for ($i = 1; $i <= $tam; $i++) {
-                    $prod = $_GET["producto0$i"];
-                    $cant = intval($_GET["cantidad0$i"]);
+                $query = $connection->prepare('SELECT * FROM pedidos WHERE fecha = :fecha');
+                $query->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+                $query->execute();
+                if($query->rowCount() > 0) {
+                    while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                        $pedidoID = $row['id'];
+                    }
+                } 
 
-                    $query = $connection->prepare('SELECT * FROM pedidos WHERE fecha = :fecha');
-                    $query->bindParam(':fecha', $fecha, PDO::PARAM_STR);
-                    $query->execute();
+                for($i = 0; $i < $tam; $i+=1) {
+                    $prod = $_GET["producto$i"];
+                    $cant = intval($_GET["cantidad$i"]);
 
-                    if($query->rowCount() > 0) {
-                        $pedidoID;
-
-                        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                            $pedidoID = $row['id'];
-                        }
-                        
-                        $state = $connection->prepare('INSERT INTO productosPedido VALUES (NULL, :producto, :cantidad, :pedidoID)');
-                        $state->bindParam(':pedidoID', $pedidoID, PDO::PARAM_INT);
-                        $state->bindParam(':producto', $prod, PDO::PARAM_STR);
-                        $state->bindParam(':cantidad', $cant, PDO::PARAM_INT);
-                        $state->execute();
-                        
-                        if($state->rowCount() > 0) {
-                            echo'<script type="text/javascript">
-                                    window.location.href="../index.php";
-                                    alert("Descripcion agregada con éxito");
-                                </script>';
-                            }
-                        else {
-                            echo "Error al agregar descripcion";
-                        }
-                    } 
-                    
+                    $state = $connection->prepare('INSERT INTO productosPedido VALUES (NULL, :producto, :cantidad, :pedidoID)');
+                    $state->bindParam(':pedidoID', $pedidoID, PDO::PARAM_INT);
+                    $state->bindParam(':producto', $prod, PDO::PARAM_STR);
+                    $state->bindParam(':cantidad', $cant, PDO::PARAM_INT);
+                    $state->execute();
                 }
-                //echo json_encode($orders);
+
+                echo '<script type="text/javascript">
+                        window.location.href="../index.php";
+                        alert("Pedido realizado");
+                        localStorage.clear();
+                    </script>';
+
             } catch(PDOException $e) {
                 error_log("Error de consulta - " . $e, 0);
             }
@@ -134,9 +127,9 @@
                             str = "&fecha=" + "' . $fecha . '";
                             link += str;
                             for (var i = 0; i < list.length; i++) {
-                                str = "&producto" + i + 1 + "=" + list[i].name.split(" ").join("");
+                                str = "&producto" + i + "=" + list[i].name.split(" ").join("");
                                 link += str;
-                                str = "&cantidad" + i + 1 + "=" + list[i].amount;
+                                str = "&cantidad" + i + "=" + list[i].amount;
                                 link += str;
                             }
                             window.location.href = link;
@@ -144,7 +137,9 @@
                     </script>';
             }
             else {
-                echo "Error al agregar pedido";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }catch(PDOException $e) {
             error_log("Error de conexión - " . $e, 0);
@@ -167,7 +162,9 @@
                     </script>';
                 }
             else {
-                echo "Error al eliminar pedido";
+                echo '<script type="text/javascript">
+                    window.location.href="../views/others/error.php";
+                </script>';
             }
         }
         catch(PDOException $e) {

@@ -20,14 +20,15 @@
     ?>
     <form class="reservation-form" action="../../controllers/reservsController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
         <legend class="login-title"> Reservaciones </legend>
-        <input type="text" value="Nombre" class="form-reservation" name="reservName" required/>
-        <input type="text" value="Teléfono" class="form-reservation" name="reservPhone" required/>
+        <input type="text" value="Nombre" class="form-reservation" name="reservName" id="reservName" required/>
+        <input type="text" value="Teléfono" class="form-reservation" name="reservPhone" id="reservPhone" required/>
+        <input type="text" value="Fecha" class="form-reservation" name="reservDate" id="reservDate" required/>
         <div class="branches-form">
             <label for="reservBranches">Sucursales: </label>
             <select id="branches" name="reservBranches" required>
-                <option value="QRoo">Playa del Carmen</option>
-                <option value="SLP">Calz. de Guadalupe</option>
-                <option value="CDMX">La Roma</option>
+                <option value="QRoo_PC">Playa del Carmen</option>
+                <option value="SLP_CG">Calz. de Guadalupe</option>
+                <option value="CDMX_LR">La Roma</option>
             </select>
         </div>
         <div class="special-info-form">
@@ -52,10 +53,13 @@
             </div>
         </div>
         <div class="reserv-form-buttons">
-            <input type="submit" value="Reservar" />
+            <input type="submit" value="Reservar" onclick="setDate()"/>
             <input type="button" value="Cancelar" />
         </div>
     </form>
+    <?php
+        include ("../../assets/components/reservStyle.php");
+    ?>
     <script src="../../assets/components/slidingMenu.js"></script>
 </body>
 

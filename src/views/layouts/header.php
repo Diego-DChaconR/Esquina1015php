@@ -40,14 +40,14 @@
                 <li class="login-menu-li"><a class="login-menu-a" href="#!">Iniciar Sesión</a></li>
             </ul>
             <a href="../admin/users.php" id="admin-icon"><i class="fa fa-cogs" aria-hidden="true"></i> </a>
-            <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
         </div>
     </div>
     <?php
         echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
     ?>
+    <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
     <ul class="photo-menu">
-        <li class="photo-menu-li"><a class="photo-menu-a" href="#!">Mi cuenta</a></li>
+        <!--li class="photo-menu-li"><a class="photo-menu-a" href="#!">Mi cuenta</a></li-->
         <?php
             include ("../modals/modal-delete-session.php");
         ?>
@@ -75,19 +75,23 @@
             </ul>
         </div>
         <div class="sliding-menu-buttons">
-            <a href="../cartstore/productlist.php" id="cart-sliding"><i class="fa fa-shopping-cart"></i></a>
+            <a href="../cartstore/productlist.php" id="cart-sliding">
+                <i class="fa fa-shopping-cart"></i>
+                <span id="badge-slid">0</span>
+            </a>
             <a href="#!" id="login-sliding"><i class="fas fa-sign-in-alt"></i></a>
             <ul class="login-sliding-menu">
                 <li class="login-sliding-menu-li"><a class="login-sliding-menu-a" href="#!">Registrarse</a></li>
                 <li class="login-sliding-menu-li"><a class="login-sliding-menu-a" href="#!">Iniciar Sesión</a></li>
             </ul>
+            <a href="../../views/admin/users.php" id="admin-icon-slid"><i class="fa fa-cogs" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>
 
 <?php
     if(array_key_exists("mail", $_SESSION)) {
-        echo "<script src='../../assets/components/ctrlUserphoto.js'></script>";
+        include("../../assets/components/ctrlUserphoto.php");
     }
     include ("../../assets/components/header.php");
 ?>

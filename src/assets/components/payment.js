@@ -55,7 +55,6 @@ function addProductsOrder(link) {
 }
 
 function controlShowMessage() {
-    console.log(deliveryForm.action);
     if (messageContainer[0].style.display != "none") {
         messageContainer[0].style.display = "none";
     } else {

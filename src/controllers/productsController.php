@@ -48,13 +48,13 @@
             }
         }
     } else if($_SERVER["REQUEST_METHOD"] === "POST") {
-        $photo = "";
-    
-        if (sizeof($_FILES) > 0) {
+        $photo;
+
+        if($_FILES["photo"]["error"] > 0) {
+            $photo = "Sin Foto";    
+        } else {
             $tmp_name = $_FILES["photo"]["tmp_name"];
             $photo = file_get_contents($tmp_name);
-        }else{
-            echo $_FILES;
         }
 
         if(array_key_exists("productName", $_POST)) {
@@ -98,7 +98,9 @@
                     </script>';
             }
             else {
-                echo "Error al agregar producto";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }catch(PDOException $e) {
             error_log("Error de conexión - " . $e, 0);
@@ -109,20 +111,35 @@
     function putProduct($pId, $pName, $pCategory, $pDescription, $pPrice, $pPhoto) {
         global $connection;
         try{
-            $query = $connection->prepare('UPDATE productos SET nombre = :pName, categoria = :pCategory, descripcion = :pDescription, precio = :pPrice, foto = :pPhoto WHERE id = :pId');
-            $query->bindParam(":pPhoto", $pPhoto, PDO::PARAM_STR);
-            $query->bindParam(":pName", $pName, PDO::PARAM_STR);
-            $query->bindParam(":pCategory", $pCategory, PDO::PARAM_STR);
-            $query->bindParam(":pDescription", $pDescription, PDO::PARAM_STR);
-            $query->bindParam(":pPrice", $pPrice, PDO::PARAM_INT);
-            $query->bindParam(":pId", $pId, PDO::PARAM_INT);
+            if($pPhoto === "Sin Foto") {
+                $query = $connection->prepare('UPDATE productos SET nombre = :pName, categoria = :pCategory, descripcion = :pDescription, precio = :pPrice WHERE id = :pId');
+                $query->bindParam(":pName", $pName, PDO::PARAM_STR);
+                $query->bindParam(":pCategory", $pCategory, PDO::PARAM_STR);
+                $query->bindParam(":pDescription", $pDescription, PDO::PARAM_STR);
+                $query->bindParam(":pPrice", $pPrice, PDO::PARAM_INT);
+                $query->bindParam(":pId", $pId, PDO::PARAM_INT);
+            } else {
+                $query = $connection->prepare('UPDATE productos SET nombre = :pName, categoria = :pCategory, descripcion = :pDescription, precio = :pPrice, foto = :pPhoto WHERE id = :pId');
+                $query->bindParam(":pPhoto", $pPhoto, PDO::PARAM_STR);
+                $query->bindParam(":pName", $pName, PDO::PARAM_STR);
+                $query->bindParam(":pCategory", $pCategory, PDO::PARAM_STR);
+                $query->bindParam(":pDescription", $pDescription, PDO::PARAM_STR);
+                $query->bindParam(":pPrice", $pPrice, PDO::PARAM_INT);
+                $query->bindParam(":pId", $pId, PDO::PARAM_INT);
+            }
+
             $query->execute();
             
             if($query->rowCount() > 0) {
-                echo "Registro guardado";
+                echo'<script type="text/javascript">
+                        window.location.href="../views/admin/products.php";
+                        alert("Producto Guardado Correctamente");
+                    </script>';
             }
             else {
-                echo "Error al actualizar producto";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }catch(PDOException $e) {
             error_log("Error de conexión - " . $e, 0);
@@ -145,7 +162,9 @@
                     </script>';
             }
             else {
-                echo "Error al eliminar producto";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }
         catch(PDOException $e) {

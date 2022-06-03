@@ -50,14 +50,14 @@
                     <li class="login-menu-li"><a class="login-menu-a" href="#!">Iniciar Sesión</a></li>
                 </ul>
                 <a href="views/admin/users.php" id="admin-icon"><i class="fa fa-cogs" aria-hidden="true"></i></a>
-                <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
             </div>
         </div>
         <?php
             echo "<img src = data:image/jpeg;base64," . $_SESSION['foto'] . " id = 'User-photo'>";
         ?>
+        <a href="#!" id="Menu-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
         <ul class="photo-menu">
-            <li class="photo-menu-li"><a class="photo-menu-a" href="#!">Mi cuenta</a></li>
+            <!--li class="photo-menu-li"><a class="photo-menu-a" href="#!">Mi cuenta</a></li-->
             <?php
                 include ("views/modals/modal-delete-session-index.php");
             ?>
@@ -85,12 +85,16 @@
                 </ul>
             </div>
             <div class="sliding-menu-buttons">
-                <a href="views/cartstore/productlist.php" id="cart-sliding"><i class="fa fa-shopping-cart"></i></a>
+                <a href="views/cartstore/productlist.php" id="cart-sliding">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="badge-slid">0</span>
+                </a>
                 <a href="#!" id="login-sliding"><i class="fas fa-sign-in-alt"></i></a>
                 <ul class="login-sliding-menu">
                     <li class="login-sliding-menu-li"><a class="login-sliding-menu-a" href="#!">Registrarse</a></li>
                     <li class="login-sliding-menu-li"><a class="login-sliding-menu-a" href="#!">Iniciar Sesión</a></li>
                 </ul>
+                <a href="views/admin/users.php" id="admin-icon-slid"><i class="fa fa-cogs" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -111,84 +115,19 @@
             <img id="scroll-img" src="assets/images/Restaurant_Images/pCom3.webp">
             <img id="scroll-img" src="assets/images/Restaurant_Images/pCom4.jpg">
         </div>
-        <div class="opinion-container">
-            <div class="opinion-card">
-                <img class="opinion-card-img" src="assets/images/People_Opinion/Person1.jpg" />
-                <div class="opinion-card-info">
-                    <h3 class="opinion-card-title"> Agustín Hernández Pou </h3>
-                    <p class="opinion-card-op"> Excelente comida con un gran servicio </p>
-                </div>
-            </div>
-            <div class="opinion-card">
-                <img class="opinion-card-img" src="assets/images/People_Opinion/Person2.jpg" />
-                <div class="opinion-card-info">
-                    <h3 class="opinion-card-title"> Lucía Leal Corbacho </h3>
-                    <p class="opinion-card-op"> Una muy buena opción para disfrutar platillos tipicos </p>
-                </div>
-            </div>
-            <div class="opinion-card">
-                <img class="opinion-card-img" src="assets/images/People_Opinion/Person3.jpg" />
-                <div class="opinion-card-info">
-                    <h3 class="opinion-card-title"> Aitana Páez Sobrino </h3>
-                    <p class="opinion-card-op"> Excelente sabor y calidad </p>
-                </div>
-            </div>
-            <div class="opinion-card">
-                <img class="opinion-card-img" src="assets/images/People_Opinion/Person4.jpg" />
-                <div class="opinion-card-info">
-                    <h3 class="opinion-card-title"> Florina Isern Abella </h3>
-                    <p class="opinion-card-op"> Deliciosos los chiles en nogada </p>
-                </div>
-            </div>
-            <div class="opinion-card">
-                <img class="opinion-card-img" src="assets/images/People_Opinion/Person5.jpg" />
-                <div class="opinion-card-info">
-                    <h3 class="opinion-card-title"> Armando Joaquin Abella </h3>
-                    <p class="opinion-card-op"> Sin duda, una de las mejores opciones para probar comida </p>
-                </div>
-            </div>
-            <div id="space"></div>
-        </div>
+        <div id="opinion-container"></div>
     </div>
-    <div class="login-container">
-        <form class="login" action="controllers/accessController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
-            <input type="hidden" name="_method" value="POST">
-            <img id="img-login" src="assets/images/user.png">
-            <legend class="login-title"> Iniciar Sesión </legend>
-            <input type="email" value="Correo Electrónico" class="form-control" id="login-mail" name="userMail"required />
-            <input type="password" value="Contraseña" class="form-control" id="login-password" name="userPassword" required />
-            <div class="login-buttons">
-                <input type="submit" value="Entrar" class="login-button" />
-                <input type="button" value="Cancelar" class="login-button" />
-            </div>
-        </form>
-    </div>
-    <div class="signUp-container">
-        <form class="signUp" action="controllers/usersController.php" method="POST" autocomplete="off" enctype="multipart/form-data">
-            <legend class="signUp-title"> Registrarse </legend>
-            <div class="signUp-personal-info">
-                <input type="text" value="Nombre" name="userName" id="sign-name" class="form-control" required />
-                <input type="text" value="Teléfono" name="userPhone" id="sign-phone" class="form-control" required />
-            </div>
-            <input type="email" value="Correo Electrónico" name="userMail" id="sign-mail" class="form-control" required />
-            <input type="password" value="Contraseña" name="userPassword" id="sign-password" class="form-control" required />
-            <input type="password" value="Contraseña" name="confirmPassword" id="sign-password2" class="form-control" required />
-            <div class="toPhoto">
-                <label for="photo">Foto: </label>
-                <input type="file" name="photo">
-            </div>
-            <div class="signUp-buttons">
-                <input type="submit" value="Registrarse" class="signUp-button" />
-                <input type="button" value="Cancelar" class="signUp-button" />
-            </div>
-        </form>
-    </div>
+    
     <?php
         if(array_key_exists("mail", $_SESSION)) {
-            echo "<script src='assets/components/ctrlUserphoto.js'></script>";
+            include ("assets/components/ctrlUserphoto.php");
         }
-        include ("assets/components/header.php");
+        include("views/modals/modal-login.php");
+        include("views/modals/modal-signup.php");
+        include("assets/components/header.php");
+        include("assets/components/paintOpinions.php");
     ?>
+    <script src="assets/components/errorLogins.js"></script>
     <script src="assets/components/controlRegister.js"></script>
     <script src="assets/components/slidingMenu.js"></script>
 </body>

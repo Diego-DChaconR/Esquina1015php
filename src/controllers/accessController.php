@@ -23,8 +23,10 @@
 
 
                 if ($query->rowCount() === 0) {
-                    echo "Usuario no encontrado";
-                    exit();
+                    echo'<script type="text/javascript">
+                            window.location.href="../index.php";
+                            alert("Usuario no encontrado");
+                        </script>';
                 }
 
                 $user;
@@ -33,7 +35,10 @@
                 }
 
                 if(!password_verify($password, $user->getPassword())) {
-                    echo "Contraseña inválida";
+                    echo'<script type="text/javascript">
+                        window.location.href="../index.php";
+                        alert("Contraseña incorrecta");
+                    </script>';
                     exit();
                 }
 
@@ -61,6 +66,7 @@
             session_destroy();
             echo'<script type="text/javascript">
                         window.location.href="../index.php";
+                        localStorage.clear();
                     </script>';
             exit();
         }

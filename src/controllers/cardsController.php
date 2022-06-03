@@ -99,7 +99,9 @@
                     </script>';
             }
             else {
-                echo "Error al agregar tarjeta";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }catch(PDOException $e) {
             error_log("Error de conexión - " . $e, 0);
@@ -120,10 +122,15 @@
             $query->execute();
             
             if($query->rowCount() > 0) {
-                echo "Registro guardado";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/cartstore/delivery.php";
+                        alert("Tarjeta actualizada correctamente");
+                    </script>';
             }
             else {
-                echo "Error al actualizar tarjeta";
+                echo '<script type="text/javascript">
+                    window.location.href="../views/others/error.php";
+                </script>';
             }
         }catch(PDOException $e) {
             error_log("Error de conexión - " . $e, 0);
@@ -146,7 +153,9 @@
                     </script>';
             }
             else {
-                echo "Error al eliminar tarjeta";
+                echo '<script type="text/javascript">
+                        window.location.href="../views/others/error.php";
+                    </script>';
             }
         }
         catch(PDOException $e) {

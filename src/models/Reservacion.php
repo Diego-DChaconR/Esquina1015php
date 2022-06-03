@@ -6,15 +6,19 @@
         private $_sucursal;
         private $_NoPers;
         private $_horario;
+        private $_fecha;
+        private $_userID;
         private $activo;
 
-        public function __construct($id, $nombre, $telefono, $sucursal, $NoPers, $horario, $activo) {
+        public function __construct($id, $nombre, $telefono, $sucursal, $NoPers, $horario, $fecha, $userID, $activo) {
             $this->setId($id);
             $this->setNombre($nombre);
             $this->setTelefono($telefono);
             $this->setSucursal($sucursal);
             $this->setNoPersonas($NoPers);
             $this->setHorario($horario);
+            $this->setFecha($fecha);
+            $this->setUserID($userID);
             $this->setActivo($activo);
         }
 
@@ -66,6 +70,22 @@
             $this->_horario = $horario;
         }
 
+        public function getFecha() {
+            return $this->_fecha;
+        }
+
+        public function setFecha($fecha) {
+            $this->_fecha = $fecha;
+        }
+
+        public function getUserID() {
+            return $this->_userID;
+        }
+
+        public function setUserID($userID) {
+            $this->_userID = $userID;
+        }
+
         public function getActivo() {
             return $this->_activo;
         }
@@ -83,6 +103,8 @@
             $arr["sucursal"] = $this->getSucursal();
             $arr["NoPersonas"] = $this->getNoPersonas();
             $arr["horario"] = $this->getHorario();
+            $arr["fecha"] = $this->getFecha();
+            $arr["userID"] = $this->getUserID();
             $arr["activo"] = $this->getActivo();
 
             return $arr;

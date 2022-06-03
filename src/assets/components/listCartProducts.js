@@ -1,12 +1,14 @@
 const productList = document.getElementById("product-list");
 const Price = document.getElementById("price");
 const confirmButton = document.getElementById("button-confirm");
+const cancelButton = document.getElementById("button-cancel");
 const keyPriceCart = "pricecart";
 
 var cost = 0;
 
 document.addEventListener("DOMContentLoaded", function() {
     confirmButton.addEventListener("click", setPrice);
+    cancelButton.addEventListener("click", cancelOrder);
     paintProducts();
 });
 
@@ -54,6 +56,10 @@ function setPrice() {
     window.location.href = '../../views/cartstore/delivery.php';
 }
 
+function cancelOrder() {
+    window.location.href = '../../index.php';
+}
+
 function deleteProduct(id) {
     let list = getList(keyList);
 
@@ -76,4 +82,7 @@ function deleteProduct(id) {
     setTimeout(() => {
         product.remove();
     }, 300);
+
+    controlBadge();
+    controlBadgeSlid();
 }
